@@ -17,7 +17,9 @@ Module.register("MMM-AfterShip", {
         retryDelay: 2500,
         rotateInterval: 30 * 1000, // 30 second rotation of items
         updateInterval: 10 * 60 * 1000, // 10 minutes
-        apiLanguage: "en"
+        apiLanguage: "en",
+        dateTimeFormat: "ddd, MMM DD, YYYY, h:mm a",
+        dateFormat: "ddd, MMM DD, YYYY"
     },
 
     getStyles: function() {
@@ -200,8 +202,7 @@ Module.register("MMM-AfterShip", {
 			// Current date and time (wherever you are)
             var date = document.createElement("div");
             date.classList.add("small", "bright", "date");
-            moment().locale(this.config.apiLanguage);
-            date.innerHTML = moment().local().format("ddd, DD. MMM. YYYY, hh:mm");
+            date.innerHTML = moment().local().format(this.config.dateTimeFormat);
             wrapper.appendChild(date);
 		
 		} // Closes else statement from deliveries pending if statement above
