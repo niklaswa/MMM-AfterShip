@@ -200,7 +200,8 @@ Module.register("MMM-AfterShip", {
 			// Current date and time (wherever you are)
             var date = document.createElement("div");
             date.classList.add("small", "bright", "date");
-            date.innerHTML = moment().local().format("ddd, MMM DD, YYYY, h:mm a");
+            moment().locale(this.config.apiLanguage);
+            date.innerHTML = moment().local().format("ddd, DD. MMM. YYYY, hh:mm");
             wrapper.appendChild(date);
 		
 		} // Closes else statement from deliveries pending if statement above
