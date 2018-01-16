@@ -45,7 +45,7 @@ Module.register("MMM-AfterShip", {
         wrapper.style.maxWidth = this.config.maxWidth;
 
         if (!this.loaded) {
-            wrapper.innerHTML = "Where's my shit?";
+            wrapper.innerHTML = "Wo ist mein Scheiß?";
             wrapper.classList.add("bright", "light", "small");
             return wrapper;
         }
@@ -89,21 +89,21 @@ Module.register("MMM-AfterShip", {
             // Last update on shipment
             var lastUpdate = document.createElement("div");
             lastUpdate.classList.add("xsmall", "bright", "lastUpdate");
-            lastUpdate.innerHTML = "Last update: " + moment(AfterShip.last_updated_at).local().format("ddd, MMM DD, YYYY, h:mm a");
+            lastUpdate.innerHTML = "Letztes Update: " + moment(AfterShip.last_updated_at).local().format("ddd, MMM DD, YYYY, h:mm a");
             wrapper.appendChild(lastUpdate);
 
 
             // tracking number of shipment
             var tracking_number = document.createElement("div");
             tracking_number.classList.add("xsmall", "bright", "tracking_number");
-            tracking_number.innerHTML = "Tracking #: " + AfterShip.tracking_number;
+            tracking_number.innerHTML = "Sendungsnummer: " + AfterShip.tracking_number;
             wrapper.appendChild(tracking_number);
 
 
             // Courier name
             var slug = document.createElement("div");
             slug.classList.add("xsmall", "bright", "courier");
-            slug.innerHTML = "Courier: " + (AfterShip.slug.toUpperCase());
+            slug.innerHTML = "Lieferant: " + (AfterShip.slug.toUpperCase());
             wrapper.appendChild(slug);
 
 
@@ -111,10 +111,10 @@ Module.register("MMM-AfterShip", {
             var expected_delivery = document.createElement("div");
             expected_delivery.classList.add("xsmall", "bright", "expected_delivery");
             if (AfterShip.expected_delivery != null) {
-                expected_delivery.innerHTML = "Expected delivery on: " + moment(AfterShip.expected_delivery).local().format("ddd, MMM DD, YYYY");
+                expected_delivery.innerHTML = "Voraussichtliche Lieferung am: " + moment(AfterShip.expected_delivery).local().format("ddd, MMM DD, YYYY");
                 wrapper.appendChild(expected_delivery);
             } else {
-                expected_delivery.innerHTML = "No expected delivery date!";
+                expected_delivery.innerHTML = "Kein vorraussichtliches Lieferdatum";
                 wrapper.appendChild(expected_delivery);
             }
 
@@ -122,10 +122,10 @@ Module.register("MMM-AfterShip", {
             var shipment_type = document.createElement("div");
             shipment_type.classList.add("xsmall", "bright", "shipment_type");
             if (AfterShip.shipment_type != null) {
-                shipment_type.innerHTML = "Shipping: " + AfterShip.shipment_type;
+                shipment_type.innerHTML = "Lieferung: " + AfterShip.shipment_type;
                 wrapper.appendChild(shipment_type);
             } else {
-                shipment_type.innerHTML = "Shipping: If you're lucky!";
+                shipment_type.innerHTML = "Lieferung: Wenn du Glück hast!";
                 wrapper.appendChild(shipment_type);
             }
 
@@ -139,7 +139,7 @@ Module.register("MMM-AfterShip", {
             // Title of shipment (if any)
             var Title = document.createElement("div");
             Title.classList.add("xsmall", "bright", "Title");
-            Title.innerHTML = "Title: " + AfterShip.title;
+            Title.innerHTML = "Name: " + AfterShip.title;
             wrapper.appendChild(Title);
 
             // objects that are inside an array that is inside an object
@@ -147,10 +147,10 @@ Module.register("MMM-AfterShip", {
             var location = document.createElement("div");
             location.classList.add("xsmall", "bright", "location");
             if (AfterShip.checkpoints.length != 0) {
-                location.innerHTML = "Location: " + AfterShip.checkpoints[checkpoints.length - 1].location; // only the last object in the array = checkpoints[checkpoints.length -1] //
+                location.innerHTML = "Ort: " + AfterShip.checkpoints[checkpoints.length - 1].location; // only the last object in the array = checkpoints[checkpoints.length -1] //
                 wrapper.appendChild(location);
             } else {
-                location.innerHTML = "Location: Who the fuck knows!";
+                location.innerHTML = "Ort: Das weiß nur der Wind!";
                 wrapper.appendChild(location);
             }
 
@@ -160,10 +160,10 @@ Module.register("MMM-AfterShip", {
             var checkpoint_time = document.createElement("div");
             checkpoint_time.classList.add("xsmall", "bright", "checkpoint_time");
             if (AfterShip.checkpoints.length != 0) {
-                checkpoint_time.innerHTML = "When: " + moment(AfterShip.checkpoints[checkpoints.length - 1].checkpoint_time).local().format("ddd, MMM DD, YYYY, h:mm a");
+                checkpoint_time.innerHTML = "Wann: " + moment(AfterShip.checkpoints[checkpoints.length - 1].checkpoint_time).local().format("ddd, MMM DD, YYYY, h:mm a");
                 wrapper.appendChild(checkpoint_time);
             } else {
-                checkpoint_time.innerHTML = "When: Who the fuck cares!";
+                checkpoint_time.innerHTML = "Wann: Interessiert niemanden.";
                 wrapper.appendChild(checkpoint_time);
             }
 
@@ -173,10 +173,10 @@ Module.register("MMM-AfterShip", {
             var message = document.createElement("div");
             message.classList.add("xsmall", "bright", "message");
             if (AfterShip.checkpoints.length != 0) {
-                message.innerHTML = "Message: " + AfterShip.checkpoints[checkpoints.length - 1].message;
+                message.innerHTML = "Nachricht: " + AfterShip.checkpoints[checkpoints.length - 1].message;
                 wrapper.appendChild(message);
             } else {
-                message.innerHTML = "Message: No data from courier!";
+                message.innerHTML = "Nachricht: Keine Daten des Lieferanten!";
                 wrapper.appendChild(message);
             }
 
@@ -194,7 +194,7 @@ Module.register("MMM-AfterShip", {
             // When no deliveries are pending
             var nothing = document.createElement("div");
             nothing.classList.add("small", "bright", "nothing");
-            nothing.innerHTML = "No deliveries pending!";
+            nothing.innerHTML = "Du erwartest keine Lieferungen.";
             wrapper.appendChild(nothing);
 			
 			// Current date and time (wherever you are)
