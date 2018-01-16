@@ -92,7 +92,7 @@ Module.register("MMM-AfterShip", {
             // Last update on shipment
             var lastUpdate = document.createElement("div");
             lastUpdate.classList.add("xsmall", "bright", "lastUpdate");
-            lastUpdate.innerHTML = "Letztes Update: " + moment(AfterShip.last_updated_at).local().format("ddd, MMM DD, YYYY, h:mm a");
+            lastUpdate.innerHTML = "Letztes Update: " + moment(AfterShip.last_updated_at).local().format(this.config.dateTimeFormat);
             wrapper.appendChild(lastUpdate);
 
 
@@ -114,7 +114,7 @@ Module.register("MMM-AfterShip", {
             var expected_delivery = document.createElement("div");
             expected_delivery.classList.add("xsmall", "bright", "expected_delivery");
             if (AfterShip.expected_delivery != null) {
-                expected_delivery.innerHTML = "Voraussichtliche Lieferung am: " + moment(AfterShip.expected_delivery).local().format("ddd, MMM DD, YYYY");
+                expected_delivery.innerHTML = "Voraussichtliche Lieferung am: " + moment(AfterShip.expected_delivery).local().format(this.config.dateTime);
                 wrapper.appendChild(expected_delivery);
             } else {
                 expected_delivery.innerHTML = "Kein vorraussichtliches Lieferdatum";
@@ -163,7 +163,7 @@ Module.register("MMM-AfterShip", {
             var checkpoint_time = document.createElement("div");
             checkpoint_time.classList.add("xsmall", "bright", "checkpoint_time");
             if (AfterShip.checkpoints.length != 0) {
-                checkpoint_time.innerHTML = "Wann: " + moment(AfterShip.checkpoints[checkpoints.length - 1].checkpoint_time).local().format("ddd, MMM DD, YYYY, h:mm a");
+                checkpoint_time.innerHTML = "Wann: " + moment(AfterShip.checkpoints[checkpoints.length - 1].checkpoint_time).local().format(this.config.dateTimeFormat);
                 wrapper.appendChild(checkpoint_time);
             } else {
                 checkpoint_time.innerHTML = "Wann: Interessiert niemanden.";
