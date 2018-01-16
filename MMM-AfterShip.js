@@ -42,6 +42,7 @@ Module.register("MMM-AfterShip", {
 
     getDom: function() {
 
+        moment().locale(this.config.apiLanguage);
         var wrapper = document.createElement("div");
         wrapper.className = "wrapper";
         wrapper.style.maxWidth = this.config.maxWidth;
